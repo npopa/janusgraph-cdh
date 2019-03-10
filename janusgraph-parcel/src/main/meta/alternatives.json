@@ -4,5 +4,17 @@
     "source": "bin/gremlin-server.sh",
     "priority": 10,
     "isDirectory": false
-  }
+  },
+  "gremlin-console": {
+    "destination": "/usr/bin/gremlin-console",
+    "source": "bin/gremlin.sh",
+    "priority": 10,
+    "isDirectory": false
+  },
+  "gremlin": {
+    "destination": "/usr/bin/gremlin",
+    "source": "bin/gremlin.sh",
+    "priority": 10,
+    "isDirectory": false
+  }    
 }

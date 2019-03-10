@@ -41,7 +41,7 @@
     "janusgraph": {
       "longname"    : "janusgraph user",
       "home"        : "/var/lib/janusgraph",
-      "shell"       : "/bin/bash",
+      "shell"       : "/sbin/nologin",
       "extra_groups": [ "janusgraph" ]
     }
   },
