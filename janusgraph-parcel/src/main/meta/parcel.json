@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "JANUSGRAPH",
+  "version": "${janusgraph.version}",
+  "extraVersionInfo": {
+    "fullVersion": "${janusgraph.version}",
+    "baseVersion": "${janusgraph.version}",
+    "patchCount": "0"
+  },
+  "setActiveSymlink": true,
+  "depends": "CDH (>= 5.5), CDH (<< 7.0)",
+  "replaces": "",
+  "conflicts": "",
+
+  "provides": [
+    "JanusGraph ${janusgraph.version}",
+    "Apache TinkerPop ${tinkerpop.version}"
+  ],
+
+  "scripts": {
+    "defines": "janusgraph_env.sh"
+  },
+  "packages": [
+    { "name"   : "JanusGraph",
+      "version": "${janusgraph.version}"
+    },
+    { "name"   : "Apache TinkerPop",
+      "version": "${tinkerpop.version}"
+    }
+  ],
+  "components": [
+    { "name"   : "JanusGraph",
+      "version": "${janusgraph.version}"
+    },
+    { "name"   : "Apache TinkerPop",
+      "version": "${tinkerpop.version}"
+    }
+  ],
+
+  "users": {
+    "janusgraph": {
+      "longname"    : "janusgraph user",
+      "home"        : "/var/lib/janusgraph",
+      "shell"       : "/bin/bash",
+      "extra_groups": [ "janusgraph" ]
+    }
+  },
+
+  "groups": [
+    "janusgraph"
+  ]
+}

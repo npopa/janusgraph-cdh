@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<component>
+	<fileSets>
+		<fileSet>
+			<directory>${basedir}/target/meta</directory>
+			<outputDirectory>meta</outputDirectory>
+			<fileMode>0755</fileMode>
+			<directoryMode>0755</directoryMode>
+		</fileSet>
+		<fileSet>
+			<directory>target/tmp/${janusgraph.package}</directory>
+			<includes>
+				<include>**/*</include>
+			</includes>
+			<outputDirectory>/</outputDirectory>
+		</fileSet>
+	</fileSets>
+</component>

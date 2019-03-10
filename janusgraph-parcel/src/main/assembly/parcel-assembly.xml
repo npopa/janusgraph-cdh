@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+	<id>parcel</id>
+
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+	<baseDirectory>JANUSGRAPH-${janusgraph.version}-b${buildNumber}</baseDirectory>
+	<includeBaseDirectory>true</includeBaseDirectory>
+	<componentDescriptors>
+		<componentDescriptor>src/main/assembly/components.xml</componentDescriptor>
+	</componentDescriptors>
+	<moduleSets>
+		<moduleSet>
+			<!-- Enable access to all projects in the current multimodule build! -->
+		    <useAllReactorProjects>true</useAllReactorProjects>
+			<!-- Now, select which projects to include in this module-set. -->
+			<includes>
+				<include>org.npopa.samples:janusgraph-parcel</include>
+			</includes>
+			<binaries>
+				<outputDirectory>lib</outputDirectory>
+				<includeDependencies>false</includeDependencies>
+				<unpack>false</unpack>
+			</binaries>
+		</moduleSet>
+	</moduleSets>
+</assembly>

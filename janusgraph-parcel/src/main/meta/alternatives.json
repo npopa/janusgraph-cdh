@@ -1,0 +1,8 @@
+{
+  "gremlin-server": {
+    "destination": "/usr/bin/gremlin-server",
+    "source": "bin/gremlin-server.sh",
+    "priority": 10,
+    "isDirectory": false
+  }
+}

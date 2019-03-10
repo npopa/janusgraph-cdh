@@ -1,0 +1,35 @@
+<assembly>
+  <id>assemble</id>
+  <formats>
+    <format>jar</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <files>
+    <file>
+      <source>${project.basedir}/src/main/descriptor/service.sdl</source>
+      <outputDirectory>/descriptor</outputDirectory>
+      <filtered>true</filtered>
+    </file>
+    <file>
+      <source>${project.basedir}/src/main/scripts/buildinfo.sh</source>
+      <outputDirectory>/scripts</outputDirectory>
+      <filtered>true</filtered>
+    </file>
+  </files>
+
+  <fileSets>
+    <fileSet>
+      <directory>${project.basedir}/src/main</directory>
+      <outputDirectory>/</outputDirectory>
+      <includes>
+        <include>aux/**</include>
+        <include>images/**</include>
+        <include>scripts/**</include>
+        <include>META-INF/**</include>
+      </includes>
+      <excludes>
+        <exclude>buildinfo.sh</exclude>
+      </excludes>
+    </fileSet>
+  </fileSets>
+</assembly>
