@@ -128,11 +128,11 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>/usr/local/bin/python</executable>
+							<executable>python</executable>
 							<keeyAlive>true</keeyAlive>
 							<classpathScope>test</classpathScope>
 							<arguments>
-								<argument>/Users/npopa/workspace/other/cm_ext/make_manifest/make_manifest.py</argument>
+								<argument>../bin/make_manifest.py</argument>
 								<argument>${basedir}/target/</argument>
 							</arguments>
 						</configuration>
