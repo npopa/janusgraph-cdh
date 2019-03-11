@@ -1,7 +1,7 @@
 {
   "name" : "JANUSGRAPH",
   "label" : "JanusGraph",
-  "description" : "JanusGraph - opensource",
+  "description" : "JanusGraph is a scalable graph database optimized for storing and querying graphs containing hundreds of billions of vertices and edges distributed across a multi-machine cluster. JanusGraph is a transactional database that can support thousands of concurrent users executing complex graph traversals in real time.",
   "version" : "${janusgraph.version}",
   "runAs" : {
     "user" : "janusgraph",
@@ -13,6 +13,14 @@
      "cdhVersion": {"min": "5"}
    },
   "icon" : "images/janusgraph.png",
+  "serviceDependencies" : [
+    {
+     "name" : "ZOOKEEPER"
+    }, 
+    {
+      "name" : "HBASE", 
+      "required" : "true"
+    }  
   "parameters" : [
     {
       "name" : "dummy",
@@ -65,35 +73,35 @@
        },
       "parameters" : [
         {
-          "name" : "role_var1",
-          "label" : "Role Var1 Label",
-          "description" : "Role Var1 Description",
-          "configName" : "role.var1.config",
-          "type" : "string",
-          "default" : "defaultVal"
+          "name" : "gremlin_server_port",
+          "label" : "Gremlin Server Port",
+          "description" : "Gremlin Server Port Description",
+          "configName" : "port",
+          "type" : "port",
+          "default" : "8183"
         },
         {
-          "name" : "portNum",
-          "label" : "Webserver port",
-          "description" : "The webserver port number",
+          "name" : "gremlin_server_host",
+          "label" : "Gremlin Server Host",
+          "description" : "Gremlin Server Host Description",
           "configName" : "portNum",
           "required" : "true",
-          "type" : "port",
-          "default" : 8080
+          "type" : "string",
+          "default" : "Some_Host"
         }
       ],
       "configWriter" : {
          "generators" : [
            {
-             "filename" : "params.properties",
+             "filename" : "janusgraph-server.properties",
              "configFormat" : "properties"
            }
          ],
-         "peerConfigGenerators" : [
+         "auxConfigGenerators" : [
            {
-             "filename" : "workers.properties",
-             "params" : ["portNum"]
-           }
+             "filename" : "gremlin-server.yaml",
+             "sourceFilename" : "aux/gremlin-server.yaml"
+           }           
           ]
        }
     }
