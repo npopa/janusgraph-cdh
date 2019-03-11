@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.npopa.samples</groupId>
     <artifactId>janusgraph-cdh</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>janusgraph-csd</artifactId>
   <packaging>pom</packaging>
@@ -13,6 +13,25 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>com.cloudera.enterprise</groupId>
+        <artifactId>schema-validator-maven-plugin</artifactId>
+        <version>5.15.0</version>
+        <executions>
+          <execution>
+            <id>validate-schema</id>
+            <phase>test</phase>
+            <goals>
+              <goal>validate</goal>
+            </goals>
+            <configuration>
+              <sourceDirectory>src</sourceDirectory>
+              <strictMode>true</strictMode>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>

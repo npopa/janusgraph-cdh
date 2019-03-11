@@ -4,17 +4,39 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.npopa.samples</groupId>
 	<artifactId>janusgraph-cdh</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>janusgraph-cdh</name>
 	<description>Build Janusgraph parcel and csd for Cloudera Manager</description>
 	<properties>
-	    <janusgraph.version>0.3.1</janusgraph.version>
-	    <tinkerpop.version>3.3.3</tinkerpop.version>
+		<janusgraph.version>0.3.1</janusgraph.version>
+		<tinkerpop.version>3.3.3</tinkerpop.version>
 		<janusgraph.package>janusgraph-${janusgraph.version}-hadoop2</janusgraph.package>
-		<janusgraph.download.url>https://github.com/JanusGraph/janusgraph/releases/download/v${janusgraph.version}/${janusgraph.package}.zip</janusgraph.download.url>		
+		<janusgraph.download.url>https://github.com/JanusGraph/janusgraph/releases/download/v${janusgraph.version}/${janusgraph.package}.zip</janusgraph.download.url>
 	</properties>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>cdh.plugin.repo</id>
+			<url>https://repository.cloudera.com/content/groups/cloudera-repos</url>
+			<name>Cloudera Repositories</name>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<repositories>
+		<repository>
+			<id>cdh.repo</id>
+			<url>https://repository.cloudera.com/content/groups/cloudera-repos</url>
+			<name>Cloudera Repositories</name>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	
 	<modules>
 		<module>janusgraph-parcel</module>
 		<module>janusgraph-csd</module>
