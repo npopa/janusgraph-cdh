@@ -12,10 +12,6 @@
      "generation" : 1,
      "cdhVersion": {"min": "5"}
    },
-   "parcel" : {
-    "repoUrl" : "https://janusgraph.parcel.cloudera.com:8000",
-    "requiredTags" : [ "janusgraph" ]
-  },
   "icon" : "images/janusgraph.png",
   "parameters" : [
     {
