@@ -1,6 +1,8 @@
 #!/bin/bash
-echo "Setting up janusgraph environment ..."
-export JANUSGRAPH_DIST=$PARCELS_ROOT/$PARCEL_DIRNAME
-export PARCEL_VERSION="${pom.version}"
-export PARCEL_BUILT_BY="${user.name}"
-export PARCEL_BUILT_DATE="${timestamp}"
+
+export JANUSGRAPH_VERSION="${janusgraph.version}"
+export JANUSGRAPH_PACKAGE="${janusgraph.package}"
+
+export JANUSGRAPH_PARCEL=${PARCELS_ROOT}/${PARCEL_DIRNAME}
+export JANUSGRAPH_HOME=${PARCELS_ROOT}/${PARCEL_DIRNAME}/${JANUSGRAPH_PACKAGE}
+

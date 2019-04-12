@@ -13,27 +13,20 @@
   "conflicts": "",
 
   "provides": [
-    "JanusGraph ${janusgraph.version}",
-    "Apache TinkerPop ${tinkerpop.version}"
+    "janusgraph"
   ],
 
   "scripts": {
     "defines": "janusgraph_env.sh"
   },
   "packages": [
-    { "name"   : "JanusGraph",
+    { "name"   : "janusgraph",
       "version": "${janusgraph.version}"
-    },
-    { "name"   : "Apache TinkerPop",
-      "version": "${tinkerpop.version}"
     }
   ],
   "components": [
-    { "name"   : "JanusGraph",
+    { "name"   : "janusgraph",
       "version": "${janusgraph.version}"
-    },
-    { "name"   : "Apache TinkerPop",
-      "version": "${tinkerpop.version}"
     }
   ],
 

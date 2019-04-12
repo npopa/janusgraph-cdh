@@ -1,0 +1,17 @@
+{
+    "name": "JANUSGRAPH",
+    "nameForCrossEntityAggregateMetrics": "janusgraphs",
+    "version": "${janusgraph.version}",
+    "metricDefinitions": [],
+    "metricEntityAttributeDefinitions": [],
+    "metricEntityTypeDefinitions": [],
+    "roles": [
+        {
+            "name": "GREMLIN_SERVER",
+            "metricDefinitions": [
+            ]
+        }
+    ]
+}
+
+

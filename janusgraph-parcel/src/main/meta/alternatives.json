@@ -1,20 +1,26 @@
 {
   "gremlin-server": {
     "destination": "/usr/bin/gremlin-server",
-    "source": "bin/gremlin-server.sh",
+    "source": "${janusgraph.package}/bin/gremlin-server.sh",
     "priority": 10,
     "isDirectory": false
   },
   "gremlin-console": {
     "destination": "/usr/bin/gremlin-console",
-    "source": "bin/gremlin.sh",
+    "source": "${janusgraph.package}/bin/gremlin.sh",
     "priority": 10,
     "isDirectory": false
   },
   "gremlin": {
     "destination": "/usr/bin/gremlin",
-    "source": "bin/gremlin.sh",
+    "source": "${janusgraph.package}/bin/gremlin.sh",
     "priority": 10,
     "isDirectory": false
+  },
+  "janusgraph-conf": {
+    "destination": "/etc/janusgraph/conf",
+    "source": "${janusgraph.package}/conf",
+    "priority": 10,
+    "isDirectory": true
   }    
 }

@@ -7,7 +7,7 @@
 	<formats>
 		<format>tar.gz</format>
 	</formats>
-	<baseDirectory>JANUSGRAPH-${janusgraph.version}-b${buildNumber}</baseDirectory>
+	<baseDirectory>JANUSGRAPH-${janusgraph.version}-${buildNo}</baseDirectory>
 	<includeBaseDirectory>true</includeBaseDirectory>
 	<componentDescriptors>
 		<componentDescriptor>src/main/assembly/components.xml</componentDescriptor>
@@ -18,7 +18,7 @@
 		    <useAllReactorProjects>true</useAllReactorProjects>
 			<!-- Now, select which projects to include in this module-set. -->
 			<includes>
-				<include>org.npopa.samples:janusgraph-parcel</include>
+				<include>org.npopa.samples:janusgraph-compat-cdh5</include>
 			</includes>
 			<binaries>
 				<outputDirectory>lib</outputDirectory>

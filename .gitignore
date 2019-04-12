@@ -1,0 +1,13 @@
+# OS
+.DS_Store
+
+# Maven 
+target/
+
+# eclipse project file
+.settings/
+.classpath
+.project
+.pydevproject
+.README.md.html
+

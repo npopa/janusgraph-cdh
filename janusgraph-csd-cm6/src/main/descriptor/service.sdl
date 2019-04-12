@@ -1,0 +1,208 @@
+{
+    "name": "JANUSGRAPH",
+    "label": "JanusGraph",
+    "description": "JanusGraph is a scalable graph database optimized for storing and querying graphs containing hundreds of billions of vertices and edges distributed across a multi-machine cluster. JanusGraph is a transactional database that can support thousands of concurrent users executing complex graph traversals in real time.",
+    "version": "${janusgraph.version}",
+    "runAs": {
+        "user": "janusgraph",
+        "group": "janusgraph",
+        "principal": "janusgraph"
+    },
+    "compatibility": {
+        "generation": 1,
+        "cdhVersion": {
+            "min": "5"
+        }
+    },
+    "icon": "images/janusgraph.png",
+    "parcel": {
+        "requiredTags": [
+            "janusgraph",
+            "cdh"
+        ]
+    },
+    "serviceDependencies": [
+        {
+            "name": "ZOOKEEPER"
+        },
+        {
+            "name": "HBASE"
+        },
+        {
+            "name": "SOLR"
+        }
+    ],
+    "kerberos": "${kerberos.auth.enable}",
+    "parameters": [
+        {
+            "name": "kerberos.auth.enable",
+            "label": "Enable Kerberos Authentication",
+            "description": "Enable Kerberos authentication for this JanusGraph service.",
+            "type": "boolean",
+            "default": "false",
+            "configurableInWizard": true
+        }
+    ],
+    "commands": [],
+    "roles": [
+        {
+            "name": "GREMLIN_SERVER",
+            "label": "Gremlin Server",
+            "pluralLabel": "Gremlin Servers",
+            "jvmBased": "true",
+            "startRunner": {
+                "program": "scripts/control.sh",
+                "args": [
+                    "start_server"
+                ],
+                "environmentVariables": {
+                    "JANUSGRAPH_PRINCIPAL": "janusgraph/${host}",
+                    "KERBEROS_AUTH_ENABLED": "${kerberos.auth.enable}",
+                    "GREMLIN_SERVER_JAVA_OPTS": "${gremlin.server.java.opts}",
+                    "GREMLIN_PORT": "${gremlin.server.port}",
+                    "JANUSGRAPH_LOG4J": "gremlin-server-log4j.properties",
+                    "JANUSGRAPH_LOGDIR": "${log_dir}",
+                    "GREMLIN_SERVER_HEAP_SIZE": "${gremlin.server.heap.size}",
+                    "GREMLIN_SERVER_METRICS_PORT": "${gremlin.server.metrics.port}",
+                    "CFG_MGMT_HBASE_TABLE": "${cfg.mgmt.hbase.table}"
+                }
+            },
+            "metricsSource": {
+                "metricsFormat": "JMX",
+                "httpSource": {
+                    "httpUrl": "http://${host}:${gremlin.server.metrics.port}/jmx",
+                    "httpsUrl": "https://${host}:${gremlin.server.metrics.port}/jmx"
+                }
+            },
+            "stopRunner": {
+                "timeout": "30000"
+            },
+            "kerberosPrincipals": [
+                {
+                    "name": "JANUSGRAPH_PRINCIPAL",
+                    "primary": "janusgraph",
+                    "instance": "${host}"
+                }
+            ],
+            "logging": {
+                "dir": "/var/log/janusgraph",
+                "filename": "gremlin-server.log",
+                "configName": "log.dir",
+                "configFilename": "gremlin-server-log4j.properties",
+                "modifiable": true,
+                "loggingType": "log4j",
+                "additionalConfigs": []
+            },
+            "parameters": [
+                {
+                    "name": "gremlin.server.heap.size",
+                    "label": "Gremlin Server Heap Size",
+                    "description": "Heap size of the Gremlin Server.",
+                    "type": "memory",
+                    "unit": "bytes",
+                    "required": "true",
+                    "default": 1073741824
+                },
+                {
+                    "name": "gremlin.server.port",
+                    "label": "Gremlin Server Port",
+                    "description": "Gremlin Server Port Description",
+                    "type": "port",
+                    "default": "8182"
+                },
+                {
+                    "name": "gremlin.server.metrics.port",
+                    "label": "Gremlin Server Web JMX Port",
+                    "description": "Port for web JMX metrics.",
+                    "type": "long",
+                    "default": "8183"
+                },
+                {
+                    "name": "gremlin.server.java.opts",
+                    "type": "string",
+                    "default": " ",
+                    "label": "GremlinServer Java options",
+                    "description": "Additional configuration for variable GREMLIN_SERVER_JAVA_OPTS that will be passed down to the JVM running GremlinServer.",
+                    "required": "false"
+                },
+                {
+                    "name": "cfg.mgmt.hbase.table",
+                    "type": "string",
+                    "default": "jgraph:cfg_mgmt",
+                    "label": "JanusGraph Configuration management HBase table",
+                    "description": "JanusGraph Configuration management HBase table. Make sure the user has rights to create the table.",
+                    "required": "false"
+                }
+            ],
+            "configWriter": {
+                "generators": [],
+                "auxConfigGenerators": [
+                    {
+                        "filename": "gremlin-server.yaml",
+                        "sourceFilename": "aux/gremlin-server.yaml"
+                    },
+                    {
+                        "filename": "janusgraph-cfg-mgmt.properties",
+                        "sourceFilename": "aux/janusgraph-cfg-mgmt.properties"
+                    },
+                    {
+                        "filename": "janusgraph-default.properties",
+                        "sourceFilename": "aux/janusgraph-default.properties"
+                    },
+                    {
+                        "filename": "janusgraph-custom.properties",
+                        "sourceFilename": "aux/janusgraph-custom.properties"
+                    },
+                    {
+                        "filename": "janusgraph-env.sh",
+                        "sourceFilename": "aux/janusgraph-env.sh"
+                    }
+                ]
+            }
+        }
+    ],
+    "gateway": {
+        "alternatives": {
+            "name": "janusgraph-conf",
+            "priority": 50,
+            "linkRoot": "/etc/janusgraph"
+        },
+        "scriptRunner": {
+            "program": "scripts/control.sh",
+            "args": [
+                "client_config"
+            ]
+        },
+        "configWriter": {
+            "generators": [],
+            "auxConfigGenerators": [
+                {
+                    "filename": "janusgraph-conf/gremlin-client.yaml",
+                    "sourceFilename": "aux/gremlin-client.yaml"
+                },
+                {
+                    "filename": "janusgraph-conf/janusgraph-env.sh",
+                    "sourceFilename": "aux/janusgraph-env.sh"
+                },
+                {
+                    "filename": "janusgraph-conf/janusgraph-default.properties",
+                    "sourceFilename": "aux/janusgraph-default.properties"
+                },
+                {
+                    "filename": "janusgraph-conf/janusgraph-custom.properties",
+                    "sourceFilename": "aux/janusgraph-custom.properties"
+                }
+            ],
+            "peerConfigGenerators": [
+                {
+                    "filename": "janusgraph-conf/gremlin-servers.properties",
+                    "refreshable": false,
+                    "params": [
+                        "gremlin.server.port"
+                    ],
+                    "roleName": "GREMLIN_SERVER"
+                }
+            ]
+        }
+    }
+}

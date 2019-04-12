@@ -1,0 +1,174 @@
+{
+    "version": "${janusgraph.version}",
+    "name": "JANUSGRAPH",
+    "nameForCrossEntityAggregateMetrics": "janusgraphs",
+    "compatibility" : { "cdhVersion" : { "min" : "5.0" } },
+    "roles" : [ {
+        "name" : "GREMLIN_SERVER",
+        "nameForCrossEntityAggregateMetrics" : "janusgraph_gremlin_servers",
+        "metricDefinitions" : [
+            {
+                "context" : "REGEX$$java.lang:type=Memory$::HeapMemoryUsage::used",
+                "counter" : false,
+                "description" : "Used heap memory.",
+                "name" : "janusgraph_gremlin_server_heap_used",
+                "label" : "Used heap memory",
+                "numeratorUnit" : "bytes"
+            },
+            {
+                "context" : "REGEX$$java.lang:type=Memory$::HeapMemoryUsage::max",
+                "counter" : false,
+                "description" : "Max heap memory.",
+                "name" : "janusgraph_gremlin_server_heap_max",
+                "label" : "Max heap memory",
+                "numeratorUnit" : "bytes"
+            },
+            {
+                "context" : "RREGEX$$java.lang:type=Threading::ThreadCount",
+                "counter" : false,
+                "description" : "ThreadCount",
+                "name" : "janusgraph_gremlin_server_thread_count",
+                "label" : "ThreadCount",
+                "numeratorUnit" : "threads"
+            },
+                        {
+                "context" : "RREGEX$$java.lang:type=Threading::DaemonThreadCount",
+                "counter" : false,
+                "description" : "DaemonThreadCount",
+                "name" : "janusgraph_gremlin_server_daemon_thread_count",
+                "label" : "DaemonThreadCount",
+                "numeratorUnit" : "threads"
+            },
+                        {
+                "context" : "RREGEX$$java.lang:type=Threading::PeakThreadCount",
+                "counter" : false,
+                "description" : "PeakThreadCount",
+                "name" : "janusgraph_gremlin_server_peak_thread_count",
+                "label" : "PeakThreadCount",
+                "numeratorUnit" : "threads"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::Min",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::Min",
+                "name" : "janusgraph_gremlin_server_op_eval_min",
+                "label" : "GremlinServer.op.eval::Min",
+                "numeratorUnit" : "milliseconds"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::Max",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::Max",
+                "name" : "janusgraph_gremlin_server_op_eval_max",
+                "label" : "GremlinServer.op.eval::Max",
+                "numeratorUnit" : "milliseconds"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::Mean",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::Mean",
+                "name" : "janusgraph_gremlin_server_op_eval_mean",
+                "label" : "GremlinServer.op.eval::Mean",
+                "numeratorUnit" : "milliseconds"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::StdDev",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::StdDev",
+                "name" : "janusgraph_gremlin_server_op_eval_stddev",
+                "label" : "GremlinServer.op.eval::StdDev",
+                "numeratorUnit" : "milliseconds"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::75thPercentile",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::75thPercentile",
+                "name" : "janusgraph_gremlin_server_op_eval_75p",
+                "label" : "GremlinServer.op.eval::75thPercentile",
+                "numeratorUnit" : "milliseconds"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::95thPercentile",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::95thPercentile",
+                "name" : "janusgraph_gremlin_server_op_eval_95p",
+                "label" : "GremlinServer.op.eval::95thPercentile",
+                "numeratorUnit" : "milliseconds"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::98thPercentile",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::98thPercentile",
+                "name" : "janusgraph_gremlin_server_op_eval_98p",
+                "label" : "GremlinServer.op.eval::98thPercentile",
+                "numeratorUnit" : "milliseconds"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::99thPercentile",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::99thPercentile",
+                "name" : "janusgraph_gremlin_server_op_eval_99p",
+                "label" : "GremlinServer.op.eval::99thPercentile",
+                "numeratorUnit" : "milliseconds"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::999thPercentile",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::999thPercentile",
+                "name" : "janusgraph_gremlin_server_op_eval_999p",
+                "label" : "GremlinServer.op.eval::999thPercentile",
+                "numeratorUnit" : "milliseconds"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::50thPercentile",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::50thPercentile",
+                "name" : "janusgraph_gremlin_server_op_eval_50p",
+                "label" : "GremlinServer.op.eval::50thPercentile",
+                "numeratorUnit" : "milliseconds"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::Count",
+                "counter" : true,
+                "description" : "GremlinServer.op.eval::Count",
+                "name" : "janusgraph_gremlin_server_op_eval_count",
+                "label" : "GremlinServer.op.eval::Count",
+                "numeratorUnit" : "requests"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::MeanRate",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::MeanRate",
+                "name" : "janusgraph_gremlin_server_op_eval_meanrate",
+                "label" : "GremlinServer.op.eval::MeanRate",
+                "numeratorUnit" : "requests"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::OneMinuteRate",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::OneMinuteRate",
+                "name" : "janusgraph_gremlin_server_op_eval_1mrate",
+                "label" : "GremlinServer.op.eval::OneMinuteRate",
+                "numeratorUnit" : "requests"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::FiveMinuteRate",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::FiveMinuteRate",
+                "name" : "janusgraph_gremlin_server_op_eval_5mrate",
+                "label" : "GremlinServer.op.eval::FiveMinuteRate",
+                "numeratorUnit" : "requests"
+            },
+            {
+                "context" : "REGEX$$metrics:name=org.apache.tinkerpop.gremlin.server.GremlinServer.op.eval::FifteenMinuteRate",
+                "counter" : false,
+                "description" : "GremlinServer.op.eval::FifteenMinuteRate",
+                "name" : "janusgraph_gremlin_server_op_eval_15mrate",
+                "label" : "GremlinServer.op.eval::FifteenMinuteRate",
+                "numeratorUnit" : "requests"
+            }             
+        ]
+    }]
+}
+
+

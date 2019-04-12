@@ -1,0 +1,3 @@
+hosts: [__GREMLIN_SERVERS__]
+port: __GREMLIN_PORT__
+serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV3d0, config: { serializeResultToString: true }}

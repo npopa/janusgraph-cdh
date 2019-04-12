@@ -8,12 +8,18 @@
 			<fileMode>0755</fileMode>
 			<directoryMode>0755</directoryMode>
 		</fileSet>
+        <fileSet>
+            <directory>${basedir}/lib</directory>
+            <outputDirectory>lib</outputDirectory>
+            <fileMode>0755</fileMode>
+            <directoryMode>0755</directoryMode>
+        </fileSet>   
 		<fileSet>
 			<directory>target/tmp/${janusgraph.package}</directory>
 			<includes>
 				<include>**/*</include>
 			</includes>
-			<outputDirectory>/</outputDirectory>
+			<outputDirectory>/${janusgraph.package}</outputDirectory>
 		</fileSet>
 	</fileSets>
 </component>
