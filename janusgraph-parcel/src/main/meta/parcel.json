@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "name": "JANUSGRAPH",
-  "version": "${janusgraph.version}-b${buildNumber}",
+  "version": "${janusgraph.version}-${buildNo}",
   "extraVersionInfo": {
     "fullVersion": "${janusgraph.version}",
     "baseVersion": "${janusgraph.version}",
