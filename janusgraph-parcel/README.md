@@ -38,7 +38,13 @@ JANUSGRAPH
     └── release-notes.txt
 
 ```
+### TODO
+ * Need to have a consistent version for the parcel that is incremental on build. \
+ Maybe JANUSGRAPH-<project.version>.p<project.patch>-<janusgraph.version>-<os>.parcel \
+ Currently it is JANUSGRAPH-<janusgraph.version>-<build.date>-<os>.parcel \
+ (eg. JANUSGRAPH-0.3.1-20190412144507-el7.parcel)
 
+  
 
 
 

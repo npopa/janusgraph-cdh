@@ -27,7 +27,7 @@ cd ~/janusgraph-cdh && mvn clean package
 
 ```
 
-* Install CSD
+* Install CSD. More info [here](https://github.com/cloudera/cm_ext/wiki/Administration-of-CSDs).
 ``` shell
 #copy the CSD to CM folder
 #If it was built on the same host where CM resides then it can be copied directly.

@@ -159,6 +159,45 @@
                     }
                 ]
             }
+        },
+        {
+            "name": "GREMLIN_KT_RENEWER",
+            "label": "Gremlin Kerberos Ticket Renewer",
+            "pluralLabel": "Gremlin Kerberos Ticket Renewers",
+            "startRunner": {
+                "program": "scripts/control.sh",
+                "args": [
+                    "start_kt_renewer"
+                ],
+                "environmentVariables": {
+                    "JANUSGRAPH_PRINCIPAL": "janusgraph/${host}",
+                    "KERBEROS_AUTH_ENABLED": "${kerberos.auth.enable}",
+                    "KT_RENEW_INTERVAL": "${kt.renew.interval.sec}"
+                }
+            },
+            "stopRunner": {
+                "timeout": "30000"
+            },
+            "kerberosPrincipals": [
+                {
+                    "name": "JANUSGRAPH_PRINCIPAL",
+                    "primary": "janusgraph",
+                    "instance": "${host}"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "kt.renew.interval.sec",
+                    "label": "Kerberos Ticket Renewer interval",
+                    "description": "Kerberos Ticket Renewer interval",
+                    "type": "long",
+                    "default": "600"
+                }
+            ],
+            "configWriter": {
+                "generators": [],
+                "auxConfigGenerators": []
+            }
         }
     ],
     "gateway": {
