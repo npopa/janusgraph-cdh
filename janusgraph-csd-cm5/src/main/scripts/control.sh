@@ -101,9 +101,18 @@ case $CMD in
                    -Djava.security.auth.login.config=gremlin-jaas.conf \
                    $JAVA_OPTIONS \
                    -cp $JANUSGRAPH_CLASSPATH \
-                   org.apache.tinkerpop.gremlin.server.GremlinServer ${CONF_DIR}/gremlin-server.yaml"
+                   org.apache.tinkerpop.gremlin.server.GremlinServer ${CONF_DIR}/gremlin-server.yaml"        
+
         exec ${cmd}
         ;;
+    (start_kt_renewer)
+        #start kt-renewer
+        cmd="aux/kt_renewer.sh \
+                ${KEYTAB_FILE} \
+                ${JANUSGRAPH_PRINCIPAL} \
+                ${KT_RENEW_INTERVAL}"
+        exec ${cmd}
+        ;;    
     (client_config)
         GREMLIN_SERVERS=$(cat janusgraph-conf/gremlin-servers.properties|cut -d":" -f1 |tr '\n' ','|sed 's/,*$//g')
         GREMLIN_PORT=$(cat janusgraph-conf/gremlin-servers.properties|cut -d"=" -f2 |head -1)

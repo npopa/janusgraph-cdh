@@ -9,5 +9,5 @@ target/
 .classpath
 .project
 .pydevproject
-.README.md.html
+.*.md.html
 
