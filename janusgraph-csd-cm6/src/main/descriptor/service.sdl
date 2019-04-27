@@ -74,6 +74,11 @@
                     "httpsUrl": "https://${host}:${gremlin.server.metrics.port}/jmx"
                 }
             },
+            "externalLink": {
+                "name": "gremlin_server_jmx",
+                "label": "Gremlin Server Web JMX",
+                "url": "http://${host}:${gremlin.server.metrics.port}/jmx"
+            },
             "stopRunner": {
                 "timeout": "30000"
             },
